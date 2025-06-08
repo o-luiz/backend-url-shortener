@@ -13,6 +13,8 @@ export class AppService {
       dbName: this.envService.get('DB_NAME'),
       dbUrl: this.envService.get('DB_URL'),
       port: this.envService.get('PORT'),
+      jwtSecret: this.envService.get('JWT_SECRET'),
+      urlShortenerDomain: this.envService.get('URL_SHORTENER_DOMAIN'),
     };
 
     return envData;

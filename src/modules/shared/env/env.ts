@@ -8,6 +8,8 @@ export const envSchema = z.object({
   DB_URL: z.string(),
 
   PORT: z.coerce.number().optional().default(3333),
+  JWT_SECRET: z.string(),
+  URL_SHORTENER_DOMAIN: z.string().default('http://localhost:3333'),
 });
 
 export type Env = z.infer<typeof envSchema>;
