@@ -1,8 +1,11 @@
+import { ValueObject } from '@/modules/shared/protocols/value-object.protocol';
 import { InvalidPasswordException } from '../exceptions/invalidPassword.exception';
 import { PASSWORD_REGEX } from '../utils/passwordRegexp';
 
-export class Password {
-  private constructor(private readonly value: string) {}
+export class Password extends ValueObject<string> {
+  private constructor(private readonly _value: string) {
+    super(_value);
+  }
 
   static create(value: string): Password {
     if (!this.isValidPassword(value)) {
@@ -18,10 +21,6 @@ export class Password {
 
   static isValidPassword(password: string): boolean {
     return PASSWORD_REGEX.test(password);
-  }
-
-  getValue(): string {
-    return this.value;
   }
 
   equals(password: string): boolean {

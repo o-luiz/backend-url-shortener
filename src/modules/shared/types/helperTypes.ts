@@ -4,3 +4,5 @@ export type Prettify<T> = {
 
 export type Optional<T = any> = T | null | undefined;
 export type Maybe<T> = T | null | undefined;
+
+export type GenericObject = Record<string | number | symbol, unknown>;
