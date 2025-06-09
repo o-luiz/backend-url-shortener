@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { UseCase } from '@/modules/shared/protocols/UseCase.protocol';
+import { Injectable } from '@nestjs/common';
+import { AuthRepository } from '../repositories/auth.repository';
 
 /* - Tarefas feat Criar usuário
   :[] Criar V.O de email
@@ -11,10 +13,23 @@ import { UseCase } from '@/modules/shared/protocols/UseCase.protocol';
   :[] Criar testes unitários
   :[] Criar testes de integração
   :[x] Criar controller
+  :[] Criar repositorio em memoria
 */
 
-export class CreateUserUseCase extends UseCase {
-  async execute(_input: any): Promise<any> {
+type CreateUserUseCaseInput = {
+  email: string;
+  password: string;
+};
+
+@Injectable()
+export class CreateUserUseCase
+  implements UseCase<CreateUserUseCaseInput, boolean>
+{
+  constructor(private readonly authRepository: AuthRepository) {}
+
+  async execute(_input): Promise<boolean> {
     throw new Error('Caso de uso não implementado');
+
+    return true;
   }
 }

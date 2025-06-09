@@ -4,6 +4,9 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { AuthController } from './controllers/Auth.controller';
 
+import { InMemoryAuthRepository } from './repositories/InMemoryAuth.repository';
+import { AuthRepository } from './repositories/auth.repository';
+
 @Module({
   imports: [
     PassportModule,
@@ -13,7 +16,13 @@ import { AuthController } from './controllers/Auth.controller';
     }),
   ],
   controllers: [AuthController],
-  providers: [JwtStrategy],
+  providers: [
+    JwtStrategy,
+    {
+      provide: AuthRepository,
+      useClass: InMemoryAuthRepository,
+    },
+  ],
   exports: [JwtModule],
 })
 export class AuthModule {}
