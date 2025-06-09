@@ -1,9 +1,7 @@
-import { UseCase } from '@/modules/shared/protocols/use-case.protocol';
+import { UseCase } from '@/modules/shared/protocols/UseCase.protocol';
 
 export class CreateUserUseCase extends UseCase {
   async execute(_input: any): Promise<any> {
-    console.log('CreateUserUseCase.execute', _input);
-
-    throw new Error('Teste de erro');
+    throw new Error('Caso de uso não implementado');
   }
 }
