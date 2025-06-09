@@ -1,5 +1,5 @@
-import { InvalidPasswordException } from '../exceptions/InvalidPassword.exception';
-import { Password } from './Password.vo';
+import { InvalidPasswordException } from '../exceptions/invalidPassword.exception';
+import { Password } from './password.vo';
 
 describe('Password Value Object testes:', () => {
   it('Deve criar uma senha válida', () => {

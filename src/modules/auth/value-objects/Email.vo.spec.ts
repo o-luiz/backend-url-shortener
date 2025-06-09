@@ -1,5 +1,5 @@
-import { Email } from './Email.vo';
-import { InvalidEmailException } from '../exceptions/InvalidEmail.exception';
+import { Email } from './email.vo';
+import { InvalidEmailException } from '../exceptions/invalidEmail.exception';
 
 describe('Email Value-Object tests:', () => {
   it('Deve criar uma instância válida para o email:', () => {

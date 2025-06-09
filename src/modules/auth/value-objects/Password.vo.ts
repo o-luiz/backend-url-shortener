@@ -1,4 +1,4 @@
-import { InvalidPasswordException } from '../exceptions/InvalidPassword.exception';
+import { InvalidPasswordException } from '../exceptions/invalidPassword.exception';
 import { PASSWORD_REGEX } from '../utils/passwordRegexp';
 
 export class Password {
@@ -22,5 +22,9 @@ export class Password {
 
   getValue(): string {
     return this.value;
+  }
+
+  equals(password: string): boolean {
+    return this.value === password;
   }
 }
