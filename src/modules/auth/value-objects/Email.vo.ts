@@ -5,7 +5,7 @@ export class Email {
 
   static create(value: string): Email {
     if (!this.isValidEmail(value)) {
-      throw new InvalidEmailException(value);
+      throw new InvalidEmailException();
     }
 
     return new Email(value);

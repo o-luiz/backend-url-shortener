@@ -4,6 +4,7 @@ import { Password } from '../value-objects/password.vo';
 import { DateType } from '@/modules/shared/value-objects/dateType.vo';
 import { Maybe, Optional } from '@/modules/shared/types/helperTypes';
 import { InvalidPasswordException } from '../exceptions/invalidPassword.exception';
+import { InvalidEmailException } from '@/modules/auth/exceptions/invalidEmail.exception';
 
 type UserProps = EntityWithTimestamps<{
   id?: Maybe<number>;
@@ -47,6 +48,29 @@ export class User {
   static create(userData: CreateUserParams) {
     const email = Email.create(userData.email);
     const password = Password.create(userData.password);
+
+    return new User({
+      email,
+      password,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      deletedAt: null,
+    });
+  }
+
+  static createFromValidatedProps(validatedUserProps: {
+    email: Email;
+    password: Password;
+  }) {
+    const { email, password } = validatedUserProps;
+
+    if (!(email instanceof Email)) {
+      throw new InvalidEmailException();
+    }
+
+    if (!(password instanceof Password)) {
+      throw new InvalidPasswordException();
+    }
 
     return new User({
       email,

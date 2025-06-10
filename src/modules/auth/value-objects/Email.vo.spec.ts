@@ -12,11 +12,7 @@ describe('Email Value-Object tests:', () => {
 
   it('Deve lançar uma exceção caso o Email seja inválido', () => {
     const invalidEmail = 'email invalido ###';
-
     expect(() => Email.create(invalidEmail)).toThrow(InvalidEmailException);
-    expect(() => Email.create(invalidEmail)).toThrow(
-      `Email inválido: ${invalidEmail}`,
-    );
   });
 
   it('Deve validar os emails:', () => {

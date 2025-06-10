@@ -1,6 +1,6 @@
 export class InvalidEmailException extends Error {
-  constructor(email: string) {
-    super(`Email inválido: ${email}`);
+  constructor() {
+    super(`Email inválido`);
     this.name = 'InvalidEmailException';
     Object.setPrototypeOf(this, InvalidEmailException.prototype);
   }

@@ -6,9 +6,16 @@ import { Email } from '../../value-objects/email.vo';
 
 export class InMemoryAuthRepository extends AuthRepository {
   private users: User[] = [];
-  async createUser(user: User): Promise<boolean> {
-    this.users.push(user);
-    return true;
+  private nextUserId = 1;
+  async createUser(user: User): Promise<User> {
+    const createdUser = User.restore({
+      ...user.toJson(),
+      id: this.nextUserId++,
+    });
+
+    this.users.push(createdUser);
+
+    return createdUser;
   }
   async findUserByEmail(email: Email): Promise<Maybe<User>> {
     return this.users.find((user) => user.getEmail().equals(email.getValue()));
